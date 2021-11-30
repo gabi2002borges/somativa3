@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block conteudo %}
+<header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-transparent">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img id="logo" src="{% static 'img/logo-hospital.png' %}" style="height: 200px;">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="color: white;">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+</header>
+<div id="coluna1" style="width: 50%; height: 1000px; float: left; align-items: center; background-color:#1f104f;">
+    <img src="{% static 'img/login.png' %}" style="height: 500px; display: block; margin-left: auto; margin-right: auto; margin-top: 20%">
+</div>
+<div id="coluna2" style="width: 50%; height: 823px; float: left; text-align: left; ">
+    <div class="formulario" style="width: 450px; margin-left: 200px; margin-top: 350px; ">
+       <form action="{% url 'login' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button class="btn btn-success" type="submit">Login</button>
+            {% endbuttons %}
+       </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Grey Sloan Memorial Hospital</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body style="background-image: url({% static 'img/background.png' %});  background-repeat: no-repeat; background-size: 100% 100%;">
+<header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img id="logo" src="{% static 'img/logo-hospital.png' %}" style="height: 200px;">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                </ul>
+                 <a class="btn" href="{% url 'logout' %}"><img src="{% static 'img/logout.ico' %}" style="height: 30px;"></a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+</header>
+<div class="container" style="width: 100%; text-align:center;">
+    <h1>{{dados.nome}}</h1> <br> <h6>{{dados.especialidade}}</h6> <br>
+    {% if dados.foto %}
+    <img src="{{dados.foto.url}}" alt="">
+    {% endif %}
+</div>
+<div id="espaço" style="margin-top:500px;"></div>
+{% include 'footer.html' %}
+</body>
+</html>

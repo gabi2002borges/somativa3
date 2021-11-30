@@ -1,0 +1,50 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Grey Sloan Memorial Hospital</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body style="background-image: url({% static 'img/background.png' %});  background-repeat: no-repeat; background-size: 100% 100%;">
+<header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img id="logo" src="{% static 'img/logo-hospital.png' %}" style="height: 200px;">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}" >Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+</header>
+<div class="titulo" style="height: 60px; background-color:#1f104f; color: white; margin-top:20px; margin-bottom:20px; text-align: center;">
+    <h1>Cadastro</h1>
+</div>
+<div class="formulario" style="width: 500px; margin-left: 680px;">
+    <form action="{% url 'cadastro' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+        <button class="btn btn-success" type="submit">Enviar</button>
+        {% endbuttons %}
+    </form>
+</div>
+<div id="espaço" style="margin-top:300px;"></div>
+{% include 'footer.html' %}
+</body>
+</html>
+

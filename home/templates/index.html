@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+<header id="header-wrap">
+    <!-- Navbar Start -->
+    {% include 'navbar.html' %}
+    <!-- Navbar End -->
+
+</header>
+{% include 'carousel.html' %}
+<div class="mt-2">
+    {% include 'msg.html' %}
+</div>
+<div class="titulo" style="height: 60px; background-color:#1f104f; color: white; margin-top:20px; margin-bottom:20px; text-align: center;">
+    <h1>Equipe Médica</h1>
+</div>
+<div class="row">
+    {% for linhas in dados %}
+    <div class="col-md-6 col-sm-12 col-lg-4">
+        {% if linhas.foto %}
+        <img class="img-fluid" src="{{linhas.foto.url}}" alt="" >
+        {% endif%}
+        <p>
+            {{linhas.nome}} <br> {{linhas.especialidade}} <br>
+            <a class="btn btn-primary mt-2" href="{% url 'medicos' linhas.id %}">Saiba mais</a>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+<div id="espaço" style="margin-top:500px;"></div>
+{% include 'footer.html' %}
+{% endblock %}
